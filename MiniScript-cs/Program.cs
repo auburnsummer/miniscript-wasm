@@ -126,40 +126,8 @@ class MainClass {
 
 	public static void Main(string[] args) {
 		
-		Miniscript.HostInfo.name = "Test harness";
+		Miniscript.HostInfo.name = "WASM";
 		
-		Print("Miniscript test harness.\n");
-
-		Print("Running unit tests.\n");
-		UnitTest.Run();
-
-		Print("Running test suite.\n");
-		RunTestSuite("../../../TestSuite.txt");
-
-		Print("\n");
-
-		const string quickTestFilePath = "../../../QuickTest.mscp";
-
-		if (File.Exists(quickTestFilePath)) {
-			Print("Running quick test.\n");
-			RunFile(quickTestFilePath, true);
-		} else {
-			Print("Quick test not found, skipping...\n");
-		}
-
-		if (args.Length > 0) {
-			RunFile(args[0]);
-			return;
-		}
-		
-		Interpreter repl = new Interpreter();
-		repl.implicitOutput = repl.standardOutput;
-
-		while (true) {
-			Console.Write(repl.NeedMoreInput() ? ">>> " : "> ");
-			string inp = Console.ReadLine();
-			if (inp == null) break;
-			repl.REPL(inp);
-		}
+		Print("Welcome to MiniScript WASM.\n");
 	}
 }
